@@ -29,7 +29,7 @@ pip install pygame
    ```bash
    python game.py
    ```
-   
+   Or by running **SnakeGame.exe** 
 3. Control your snake using the arrow keys:
    * ↑ Up
    * ↓ Down

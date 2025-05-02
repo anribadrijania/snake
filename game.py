@@ -1,16 +1,15 @@
 import pygame
 import random
-
 from snake import Snake
 from ai import easy_ai_move, hard_ai_move, generate_hamiltonian_cycle
-from utils import seeded_random_food
+from utils import seeded_random_food, resource_path
 import time
 
 pygame.mixer.init()
-eat_sound = pygame.mixer.Sound("sounds/biting.wav")
-crash_sound = pygame.mixer.Sound("sounds/crashing.wav")
-win_sound = pygame.mixer.Sound("sounds/win.wav")
-lose_sound = pygame.mixer.Sound("sounds/lose.wav")
+eat_sound = pygame.mixer.Sound(resource_path("sounds/biting.wav"))
+crash_sound = pygame.mixer.Sound(resource_path("sounds/crashing.wav"))
+win_sound = pygame.mixer.Sound(resource_path("sounds/win.wav"))
+lose_sound = pygame.mixer.Sound(resource_path("sounds/lose.wav"))
 
 CELL_SIZE = 20  # pixels
 
@@ -97,10 +96,12 @@ def run_game(config):
         if player_ate:
             eat_sound.play()
             player_snake.grow = True
+            score_player += 1
 
         if ai_ate:
             eat_sound.play()
             ai_snake.grow = True
+            score_ai += 1
 
         if player_ate or ai_ate:
             eat_sound.play()
